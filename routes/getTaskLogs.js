@@ -1,7 +1,7 @@
 const { queryDatabase } = require('../lib/database')
 
 module.exports = async (req, res) => {
-  const sql = 'DELETE from tasks WHERE task_id = $taskId'
+  const sql = 'SELECT * FROM logs WHERE task_id = $taskId'
   const bindings = {
     $taskId: req.params.taskId
   }

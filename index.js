@@ -2,19 +2,33 @@ const express = require('express')
 const {
   getTasks,
   getTask,
+  getTaskLogs,
   createTask,
   cancelTask,
   deleteTask
 } = require('./routes')
+const { initDatabase } = require('./lib/database')
+const wrapRoute = require('./lib/wrap-route')
 
-const app = express()
+const run = async () => {
+  await initDatabase()
 
-app.use(express.json())
+  const app = express()
 
-app.get('/tasks', getTasks)
-app.get('/tasks/:taskId', getTask)
-app.post('/tasks', createTask)
-app.post('/tasks/:taskId/cancel', cancelTask)
-app.delete('/tasks/:taskId', deleteTask)
+  app.use(express.json())
 
-app.listen(3000,  () => console.log('Listening on port 3000'))
+  app.get('/tasks', wrapRoute(getTasks))
+  app.get('/tasks/:taskId', wrapRoute(getTask))
+  app.get('/tasks/:taskId/logs', wrapRoute(getTaskLogs))
+  app.post('/tasks', wrapRoute(createTask))
+  app.post('/tasks/:taskId/cancel', wrapRoute(cancelTask))
+  app.delete('/tasks/:taskId', wrapRoute(deleteTask))
+
+  app.listen(3000,  () => console.log('Listening on port 3000'))
+}
+
+run()
+.catch((err) => {
+  console.error(err)
+  process.exit(1)
+})
