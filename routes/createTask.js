@@ -6,13 +6,15 @@ module.exports = async (req, res) => {
   const sql = 'INSERT INTO tasks (task_id, status, pid, input) VALUES ($taskId, $status, $pid, $input)'
   const bindings = {
     $taskId: req.body.taskId,
-    $status: 'created',
+    $status: 'running',
     $input: JSON.stringify(req.body.input),
     $pid: pid
   }
-  const results = await queryDatabase(sql, bindings)
+  await queryDatabase(sql, bindings)
   return {
     statusCode: 200,
-    body: results
+    body: {
+      success: true
+    }
   }
 }
