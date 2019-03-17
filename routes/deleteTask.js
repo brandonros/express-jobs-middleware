@@ -5,9 +5,11 @@ module.exports = async (req, res) => {
   const bindings = {
     $taskId: req.params.taskId
   }
-  const results = await queryDatabase(sql, bindings)
+  await queryDatabase(sql, bindings)
   return {
     statusCode: 200,
-    body: results
+    body: {
+      success: true
+    }
   }
 }

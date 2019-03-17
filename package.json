@@ -1,11 +1,11 @@
 {
   "name": "express-tasks",
   "version": "0.0.1",
-  "description": "node.js Express wrapper around basic CRUD operations for long-lived tasks/scripts/processes",
+  "description": "Wrapper around basic CRUD operations for long-lived jobs/tasks/scripts/processes",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "",
+  "author": "Brandon Ros",
   "license": "ISC",
   "dependencies": {
     "execa": "^1.0.0",

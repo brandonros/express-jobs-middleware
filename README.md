@@ -1,6 +1,13 @@
 # express-tasks
 
-node.js Express wrapper around basic CRUD operations for long-lived tasks/scripts/processes
+Wrapper around basic CRUD operations for long-lived jobs/tasks/scripts/processes
+
+## Technologies used
+
+* node.js
+* sqlite3
+* express
+* execa
 
 ## Usage
 
