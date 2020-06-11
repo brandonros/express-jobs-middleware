@@ -3,7 +3,7 @@ PAYLOAD=$(cat <<EOF
 {
   "name": "search-logs",
   "input": {
-    "pattern": "./logs/**/*.log",
+    "pattern": "/tmp/logs/**/*.log",
     "filters": [],
     "sortKey": "timestamp",
     "sortDirection": "asc",

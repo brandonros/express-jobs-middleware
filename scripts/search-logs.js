@@ -55,7 +55,7 @@ const sort = (results, sortKey, sortDirection) => results.sort((a, b) => {
   return 0
 })
 
-const searchFile = async (filename) => {
+const searchFile = async (filename, filters) => {
   const stream = fs.createReadStream(filename)
   const interface = readline.createInterface({
     input: stream,
