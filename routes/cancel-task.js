@@ -1,5 +1,5 @@
-const { queryDatabase } = require('../lib/database')
-const { killTask } = require('../lib/tasks')
+const { queryDatabase } = require('../lib/database.js')
+const { killTask } = require('../lib/tasks.js')
 
 const getTask = async (taskId) => {
   const sql = 'SELECT pid FROM tasks WHERE task_id = $taskId'

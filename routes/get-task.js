@@ -1,4 +1,4 @@
-const { queryDatabase } = require('../lib/database')
+const { queryDatabase } = require('../lib/database.js')
 
 module.exports = async (req, res) => {
   const sql = 'SELECT * FROM tasks WHERE task_id = $taskId'

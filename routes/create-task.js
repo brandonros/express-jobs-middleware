@@ -1,5 +1,5 @@
-const { queryDatabase } = require('../lib/database')
-const { spawnTask } = require('../lib/tasks')
+const { queryDatabase } = require('../lib/database.js')
+const { spawnTask } = require('../lib/tasks.js')
 
 module.exports = async (req, res) => {
   const pid = spawnTask(req.body)
