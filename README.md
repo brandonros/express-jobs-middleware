@@ -13,7 +13,7 @@ Wrapper around basic CRUD operations for long-lived jobs/tasks/scripts/processes
 
 1. Clone repository
 1. `npm install`
-1. Configure `scripts/run-task.js` to your liking
+1. Configure `scripts/task-name.js` to your liking
 1. `npm run start`
 1. Interact with API on port `3000`
 
@@ -23,9 +23,14 @@ Wrapper around basic CRUD operations for long-lived jobs/tasks/scripts/processes
 
 ```json
 {
-  "taskId": "uuid",
+  "name": "search-logs",
   "input": {
-    "foo": "bar"
+    "pattern": "./logs/**/*.log",
+    "filters": [],
+    "sortKey": "timestamp",
+    "sortDirection": "asc",
+    "offset": 0,
+    "limit": 500
   }
 }
 ```
