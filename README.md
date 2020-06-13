@@ -39,6 +39,8 @@ Wrapper around basic CRUD operations for long-lived jobs/tasks/scripts/processes
 
 ### `GET /tasks/:taskId`
 
+### `GET /tasks/:taskId/status`
+
 ### `GET /tasks/:taskId/logs`
 
 ### `POST /tasks/:taskId/cancel`

@@ -1,7 +1,11 @@
 const { queryDatabase } = require('../lib/database.js')
 
 module.exports = async (req, res) => {
-  const sql = 'SELECT * FROM logs WHERE task_id = $taskId'
+  const sql = `SELECT type,
+                      message,
+                      created_at
+              FROM logs
+              WHERE task_id = $taskId`
   const bindings = {
     $taskId: req.params.taskId
   }

@@ -9,6 +9,7 @@
   "license": "ISC",
   "dependencies": {
     "camelcase-keys": "^5.0.0",
+    "cors": "^2.8.5",
     "execa": "^1.0.0",
     "express": "^4.16.4",
     "glob": "^7.1.6",

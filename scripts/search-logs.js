@@ -7,33 +7,33 @@ const doesLinePassFilters = (log, filters) => {
     return true
   }
   return filters.every(filter => {
-    const { key, operation, value, values } = filter
+    const { key, operation, criteria } = filter
     if (operation === '==') {
-      return log[key] === value
+      return log[key] === criteria
     } else if (operation === '!=') {
-      return log[key] !== value
+      return log[key] !== criteria
     } else if (operation === '<') {
-      return log[key] < value
+      return log[key] < criteria
     } else if (operation === '>') {
-      return log[key] > value
+      return log[key] > criteria
     } else if (operation === '<=') {
-      return log[key] <= value
+      return log[key] <= criteria
     } else if (operation === '>=') {
-      return log[key] >= value
+      return log[key] >= criteria
     } else if (operation === 'exists') {
       return log[key] !== undefined
     } else if (operation === 'doesNotExist') {
       return log[key] === undefined
     } else if (operation === 'contains') {
-      return log[key].indexOf(value) !== -1
+      return log[key].indexOf(criteria) !== -1
     } else if (operation === 'doesNotContain') {
-      return log[key].indexOf(value) === -1
+      return log[key].indexOf(criteria) === -1
     } else if (operation === 'oneOf') {
-      return values.some(value => value === log[key])
+      return criteria.some(value => value === log[key])
     } else if (operation === 'notOneOf') {
-      return !(values.some(value => value === log[key]))
+      return !(criteria.some(value => value === log[key]))
     } else {
-      throw new Error('Unknown operation')
+      throw new Error(`Unknown operation: ${operation}`)
     }
   })
 }
@@ -90,7 +90,7 @@ const run = async (input) => {
     const filename = filenames[i]
     results = results.concat(await searchFile(filename, filters))
   }
-  const sortedResults = sort(results, sortKey, sortDirection)
+  const sortedResults = (sortKey && sortDirection) ? sort(results, sortKey, sortDirection) : results
   const slicedResults = results.slice(offset, offset + limit)
   console.log(JSON.stringify({
     results: slicedResults,
